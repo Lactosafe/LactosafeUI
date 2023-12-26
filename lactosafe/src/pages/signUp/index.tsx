@@ -42,10 +42,9 @@ const SignUp: React.FC = () => {
       // logIn Api call
       signUpService(formData)
         .then((response: signUpResponse) => {
-          console.log('response',response)
+
           if (response?.statusMessage) {
-           
-            console.log('response?.email',response?.email)
+          
             login(true,{email:response?.email});
             navigate("/home");
           }

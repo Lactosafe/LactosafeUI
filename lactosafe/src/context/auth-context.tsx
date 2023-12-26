@@ -27,7 +27,6 @@ const AuthProvider: React.FC<Props> = ({ children }) => {
   };
 
   const setRole = (role: string) => {
-    console.log('setRole',setRole)
     setrole(role);
   };
   
