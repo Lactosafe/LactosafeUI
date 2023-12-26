@@ -1,16 +1,18 @@
 import * as React from "react";
-import SignInButton from "../../shared/common/sign-in-button";
-import SignInInput from "../../shared/common/sign-in-input";
 import { CONSTANTS } from "../../config/constants/common-constants";
 import "../signIn/signIn.scss";
-import SignInCheckBox from "../../shared/common/sign-in-checkbox";
-import SignInText from "../../shared/common/sign-in-text";
+import SignUpText from "../../shared/common/lacto-safe-text";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import SignInLink from "../../shared/common/sign-in-link";
+import SignUpLink from "../../shared/common/lacto-safe-link";
 import { SignUpForm } from "../../config/types/signIn-type";
-import { logInService } from "../../services/login-service";
+import { signUpService } from "../../services/login-service";
 import { AuthContext } from "../../context/auth-context";
-import SignInAlert from "../../shared/common/sign-in-alert";
+import SignUpAlert from "../../shared/common/lacto-safe-alert";
+import { useNavigate } from "react-router-dom";
+import LactoSafeButton from "../../shared/common/lacto-safe-button";
+import LactoSafeText from "../../shared/common/lacto-safe-text";
+import LactoSafeInput from "../../shared/common/lacto-safe-input";
+import { signUpResponse } from "../../config/types/auth-type";
 
 const initalValue = {
   firstName: "",
@@ -24,21 +26,28 @@ const SignUp: React.FC = () => {
   const [showAlert, setShowAlert] = React.useState<boolean>(false);
   const [alertMsg, setAlertMsg] = React.useState<string>("");
   const [alertType, setAlertType] = React.useState();
+  const navigate = useNavigate();
+
   const { login } = React.useContext(AuthContext);
 
   //   form submittion function
   const signUpSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (formData.email && formData.password) {
+    if (
+      formData.firstName &&
+      formData.lastName &&
+      formData.email &&
+      formData.password
+    ) {
       // logIn Api call
-      logInService({ email: formData.email, password: formData.password })
-        .then((response) => {
-          if (response.statusCode === "OK") {
-            login(true, response);
-            setAlertMessage(true, response.message, "success");
-          } else {
-            login(false);
-            setAlertMessage(true, response.message, "info");
+      signUpService(formData)
+        .then((response: signUpResponse) => {
+          console.log('response',response)
+          if (response?.statusMessage) {
+           
+            console.log('response?.email',response?.email)
+            login(true,{email:response?.email});
+            navigate("/home");
           }
         })
         .catch((error: Error) => {
@@ -69,44 +78,43 @@ const SignUp: React.FC = () => {
               sx={{ fontSize: 50 }}
               color="secondary"
             ></AccountCircleIcon>
-            <SignInText
-              text={CONSTANTS.SIGN_IN}
+            <LactoSafeText
+              text={CONSTANTS.SIGN_UP}
               fontSize="xxl"
               bold
-            ></SignInText>
+            ></LactoSafeText>
           </div>
-          <div className="row mt-3">
-            <SignInInput
+          <div className="row mt-4">
+            <LactoSafeInput
               variant="outlined"
               label={CONSTANTS.FIRST_NAME}
               fullWidth
               name="firstName"
               value={formData?.firstName}
               onChange={handleInputChange}
-            ></SignInInput>
-           
-            <SignInInput
+            ></LactoSafeInput>
+            <div>&nbsp;</div>
+            <LactoSafeInput
               variant="outlined"
               label={CONSTANTS.LAST_NAME}
               fullWidth
               name="lastName"
               value={formData?.lastName}
               onChange={handleInputChange}
-            ></SignInInput>
-           
+            ></LactoSafeInput>
           </div>
-          <div className="row mt-3">
-            <SignInInput
+          <div className="row mt-4">
+            <LactoSafeInput
               variant="outlined"
               label={CONSTANTS.EMAIL_ADDRESS}
               fullWidth
               name="email"
               value={formData?.email}
               onChange={handleInputChange}
-            ></SignInInput>
+            ></LactoSafeInput>
           </div>
           <div className="row mt-4">
-            <SignInInput
+            <LactoSafeInput
               variant="outlined"
               label={CONSTANTS.PASSWORD}
               name="password"
@@ -114,48 +122,40 @@ const SignUp: React.FC = () => {
               value={formData?.password}
               fullWidth
               onChange={handleInputChange}
-            ></SignInInput>
+            ></LactoSafeInput>
           </div>
-          <div className="row mt-4 remember-me">
-            <SignInCheckBox
-              name="rememberMe"
-              checked={formData?.rememberMe}
-              onChange={(e) =>
-                setFormData({ ...formData, rememberMe: e.target.checked })
-              }
-            ></SignInCheckBox>
-            <div className="remember-me-text">
-              <SignInText
-                text={CONSTANTS.REMEMBER_ME}
-                fontSize="m"
-              ></SignInText>
-            </div>
-          </div>
+
           <div className="row mt-4">
-            <SignInButton variant="contained" type="submit" fullWidth>
-              {CONSTANTS.SIGN_IN}
-            </SignInButton>
+            <LactoSafeButton variant="contained" type="submit" fullWidth>
+              {CONSTANTS.SIGN_UP}
+            </LactoSafeButton>
           </div>
-          <div className="row mt-4">
-            <SignInLink href="#">
-              <SignInText
-                text={CONSTANTS.SIGN_UP_TEXT}
+          <div className="login-link row mt-4">
+            <SignUpLink
+              component="button"
+              variant="body2"
+              onClick={() => {
+                navigate("/signin");
+              }}
+            >
+              <SignUpText
+                text={CONSTANTS.SIGN_IN_TEXT}
                 fontSize="m"
                 bold
-              ></SignInText>
-            </SignInLink>
+              ></SignUpText>
+            </SignUpLink>
           </div>
         </form>
         <div className="mt-4">
-          <SignInAlert
+          <SignUpAlert
             showAlert={showAlert}
             onClose={() => {
               setShowAlert(false);
             }}
             severity={alertType}
           >
-            <SignInText text={alertMsg} fontSize="m"></SignInText>
-          </SignInAlert>
+            <SignUpText text={alertMsg} fontSize="m"></SignUpText>
+          </SignUpAlert>
         </div>
       </div>
     </div>

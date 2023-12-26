@@ -1,0 +1,24 @@
+.icon-list {
+    display: flex;
+
+    li{
+        list-style-type: none;
+        padding: 0rem 1rem !important;
+    
+        a{ 
+            display: flex;
+            text-decoration: none;
+            color: black;
+            position: relative;
+            align-items: center;
+        
+        }
+       
+        a:hover{
+            color: #4279d3;
+        }
+    
+    }
+
+
+}

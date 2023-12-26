@@ -4,10 +4,10 @@ import React from 'react'
 
 
 
-const SignInCheckBox: React.FC<CheckboxProps> = (props) => {
+const LactoSafeCheckBox: React.FC<CheckboxProps> = (props) => {
     return (
         <Checkbox {...props}></Checkbox>
     )
 }
 
-export default SignInCheckBox;
+export default LactoSafeCheckBox;

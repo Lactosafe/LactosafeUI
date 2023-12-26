@@ -6,6 +6,8 @@ export const CONSTANTS = {
     SIGN_UP_TEXT:`Don't have an account? Sign Up`,
     ERROR_MSG:'Something went wrong',
     FIRST_NAME:'First name',
-    LAST_NAME:'Last name'
+    LAST_NAME:'Last name',
+    SIGN_UP:'Sign up',
+    SIGN_IN_TEXT:'Already have an account? Sign in'
     
 }

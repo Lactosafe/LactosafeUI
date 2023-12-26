@@ -1,0 +1,81 @@
+
+.lactoSafe_HeaderListItemBlock {
+    li {
+        list-style-type: none;
+        padding: 1rem 1rem;
+        font-family: 'Poppin', sans-serif;
+        font-size: 14px;
+        font-weight: 500;
+        letter-spacing: 0.5px;
+
+    }
+
+    #active {
+        border-bottom: 3px solid #4279d3;
+        font-weight: 700;
+        color: #4279d3
+    }
+
+
+    a {
+        display: flex;
+        text-decoration: none;
+        color: black;
+        position: relative;
+        align-items: center;
+    }
+
+    a:hover {
+        border-bottom: 3px solid #4279d3;
+        font-weight: 700;
+        transition: 0.3s;
+    }
+
+    display:block;
+    margin-top: 2rem;
+    padding: 5 2rem;
+    min-width: 12rem;
+    text-align: left;
+    align-content: center;
+    cursor: pointer;
+    font-size: 14px;
+
+}
+
+.lactoSafe_HeaderListItemRow {
+    li {
+        list-style-type: none;
+        padding: 1rem 1rem;
+        font-family: 'Poppin', sans-serif;
+        font-size: 14px;
+        font-weight: 500;
+        letter-spacing: 0.5px;
+
+    }
+
+    #active {
+        border-bottom: 3px solid #4279d3;
+        font-weight: 700;
+        color: #4279d3
+    }
+
+
+    a {
+        display: flex;
+        text-decoration: none;
+        color: black;
+        position: relative;
+        align-items: center;
+    }
+
+    a:hover {
+        border-bottom: 3px solid #4279d3;
+        font-weight: 700;
+        transition: 0.3s;
+    }
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+}

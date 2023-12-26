@@ -1,16 +1,28 @@
 export type UserData = {
-	id?: String;
-	name?: String;
-	email?: String;
+  id?: string;
+  name?: string;
+  email: string;
 };
 
 export type AuthType = {
-	userData: UserData | null;
-	isAuthenticated: boolean;
-	login: (authentication:boolean,userData?: UserData) => void;
+  role:string | null;
+  userData: UserData | null;
+  isAuthenticated: boolean;
+  login: (authentication: boolean, userData?: UserData) => void;
+  setRole: (role:string) => void;
 };
 
-export type logInRequest = {
-	email: String;
-	password: String;
+export interface logInRequest {
+  email: String;
+  password: String;
+}
+
+export interface signUpRequest extends logInRequest {
+  firstName: string;
+  lastName: string;
+}
+
+export type signUpResponse = {
+  statusMessage: string;
+  email:string
 };

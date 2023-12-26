@@ -1,5 +1,5 @@
 import React from 'react';
-import './sign-in-text.scss';
+import './text.scss';
 
 
 interface Props {
@@ -8,7 +8,7 @@ interface Props {
     bold?: boolean;
     fontSize: 's' | 'm' | 'l' | 'xl' | 'xxl';
 }
-const SignInText: React.FC<Props> = ({ text, bold, fontSize }) => {
+const LactoSafeText: React.FC<Props> = ({ text, bold, fontSize }) => {
     return (
         <div className={`row sign-in-text font-size-${fontSize} ${bold ? 'font-bold' : ''}`}>
             {text}
@@ -16,4 +16,4 @@ const SignInText: React.FC<Props> = ({ text, bold, fontSize }) => {
     )
 }
 
-export default SignInText;
+export default LactoSafeText;

@@ -1,6 +1,11 @@
 export enum AppRoutes {
-    SignIn = '/',
-    Home = '/home',
-    SignUp='/signup'
-
+  SignUp = "/",
+  Home = "/home",
+  SignIn = "/signin",
+  HistoricalData = "/historicalData",
+  Processing = "/processing",
+  Transporting = "/transporting",
+  Packaging = "/packaging",
+  LogIn = "/logIn",
+  ContactUs = "/contactUs",
 }

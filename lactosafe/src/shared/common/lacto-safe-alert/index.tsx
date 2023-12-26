@@ -7,7 +7,7 @@ interface Props extends AlertProps{
   showAlert:boolean;
 }
 
-const SignInAlert:React.FC<Props> = ({showAlert,...props}) => {
+const LactoSafeAlert:React.FC<Props> = ({showAlert,...props}) => {
   return (
     <>
     {showAlert && <Alert {...props}></Alert>}
@@ -15,4 +15,4 @@ const SignInAlert:React.FC<Props> = ({showAlert,...props}) => {
   )
 }
 
-export default SignInAlert;
+export default LactoSafeAlert;
